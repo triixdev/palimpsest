@@ -1,0 +1,3 @@
+Ref: LIB-1
+Eastgate College Library Rules. Issued 2024-02-01.
+Overdue books cost 2 rupees per day after a 3 day grace period. Reference books cannot be issued.
