@@ -45,7 +45,7 @@ function render(d) {
   if (!d.verdicts.length) box.append(el("p", "", "No two retrieved passages overlap so nothing needed ordering."));
   d.verdicts.forEach((v) => {
     const how = v.via === "code" ? "Settled by code from an explicit reference." : v.via === "decider" ? "Judged by Decider 2B." : "Decider 2B read it and code checked the dates.";
-    const extra = v.via === "code" ? "" : " Confidence " + Number(v.confidence).toFixed(2) + ". Model time " + fmt(v.latency_ms) + ". Checked once at startup.";
+    const extra = v.via === "code" ? "" : (v.status === "conflict" ? "" : " Confidence " + Number(v.confidence).toFixed(2) + ".") + " Model time " + fmt(v.latency_ms) + ". Checked once at startup.";
     const p = el("p");
     p.append(el("strong", "", v.status === "conflict" ? "Needs a person" : "Decided"), " " + v.reason + ". " + how + extra);
     box.append(p);
