@@ -4,6 +4,8 @@
 
 **Palimpsest stops your AI from mixing the old rule with the new one. When it cannot tell which one counts it says so and asks a person.**
 
+**Live demo:** https://triixdev.github.io/palimpsest/ replays a real run. The gate and retriever are the project code and the Decider 2B scores were recorded on my laptop. Run the project locally to ask your own questions.
+
 A palimpsest is a manuscript that was scraped clean and written over. The old words still show faintly underneath. Document folders work the same way. Someone updates a rule and the old file stays. Search returns both. The model reads both and blends the old number with the new one. It sounds sure and it is wrong.
 
 A small local model called Strands Decider 2B reads each pair of overlapping passages and answers one yes or no question. Plain code turns that answer and any printed dates into a verdict. **Amazon Bedrock only sees what survived.**
@@ -28,7 +30,7 @@ It is asked once per passage and the answer is cached. Code does the rest. The r
 
 I tried three more questions per pair. Whether two passages cover the same situation scored 0.07 to 0.17 even on pairs that clearly did. Whether the old rule stays in force was too close to call. Only the revising question separated the cases. That is the one decision the model owns and code handles everything else.
 
-HIGH and LOW in `gate.py` are 0.60 and 0.45. They come from a small probe on one laptop. The two passages that really revise a rule scored 0.67 and 0.88 and the other seven scored 0.31 or lower. That is a tiny sample. Run `python -m palimpsest.probe` on your own documents and adjust them.
+HIGH and LOW in `gate.py` are 0.60 and 0.45. They come from a small probe on one laptop. The two passages that really revise a rule scored 0.67 and 0.88 and the other seven scored 0.31 or lower. That is a tiny sample. Run `python -m palimpsest.probe` on your own documents and adjust them. The static demo in `docs/` is built by `python make_static.py` from those recorded scores.
 
 The wiring is one wrapped retrieval tool in `palimpsest/agent.py`.
 
@@ -57,7 +59,7 @@ The decider server has no login. Keep it on 127.0.0.1 and never start it with `-
 
 ## What I measured
 
-On one Windows laptop with no GPU the model took about 28 seconds per passage. A GPU is far faster so report your own numbers. The demo checks four pairs at startup and then answers every question instantly. **I did not run the Nova Lite comparison before the deadline so I make no claim about it.**
+On one Windows laptop with no GPU the model took about 28 seconds per passage. A GPU is far faster so report your own numbers. The demo checks four pairs at startup and then answers every question instantly. **The Bedrock agent in `palimpsest/agent.py` is written but I could not run it end to end. My AWS account could not call Bedrock before the deadline. I also did not run the Nova Lite comparison so I make no claim about it.** The gate and the demo and the tests all ran. `python -m palimpsest.agent --dry-run` prints exactly what Bedrock would receive.
 
 ## What to keep in mind
 

@@ -1,0 +1,144 @@
+[
+ {
+  "label": "Casual leave",
+  "q": "How many days of casual leave can I take?",
+  "retrieved": [
+   "leave_2022",
+   "leave_2025"
+  ],
+  "kept": [
+   "leave_2025"
+  ],
+  "texts": {
+   "leave_2022": "Ref: POL-3\nEastgate College Attendance Policy. Issued 2022-06-01.\nStudents may take up to 10 days of casual leave per semester without a medical certificate.\n",
+   "leave_2025": "Ref: POL-9\nEastgate College Attendance Policy, revised. Issued 2025-01-10. This policy supersedes POL-3.\nStudents may take up to 6 days of casual leave per semester without a medical certificate.\n"
+  },
+  "verdicts": [
+   {
+    "keep": [
+     "leave_2025"
+    ],
+    "status": "decided",
+    "reason": "leave_2025 names POL-3 as replaced",
+    "confidence": 1.0,
+    "via": "code",
+    "latency_ms": 0.0,
+    "dropped": [
+     "leave_2022"
+    ],
+    "base": "",
+    "amends": ""
+   }
+  ]
+ },
+ {
+  "label": "Tuition refund",
+  "q": "How many days do I have to withdraw for a full tuition refund?",
+  "retrieved": [
+   "refund_2023",
+   "refund_2026"
+  ],
+  "kept": [
+   "refund_2026"
+  ],
+  "texts": {
+   "refund_2023": "Ref: FEE-2\nEastgate College Fee Refund Rules. Effective 2023-04-01.\nA student who withdraws within 30 days of the semester start receives a full tuition refund.\n",
+   "refund_2026": "Ref: FEE-5\nEastgate College Fee Refund Rules. Effective 2026-03-01.\nA student who withdraws within 14 days of the semester start receives a full tuition refund.\n"
+  },
+  "verdicts": [
+   {
+    "keep": [
+     "refund_2026"
+    ],
+    "status": "decided",
+    "reason": "refund_2026 is the later version of the same document",
+    "confidence": 0.71,
+    "via": "decider+code",
+    "latency_ms": 60876.0,
+    "dropped": [
+     "refund_2023"
+    ],
+    "base": "",
+    "amends": ""
+   }
+  ]
+ },
+ {
+  "label": "Library fines",
+  "q": "What is the overdue charge for library books?",
+  "retrieved": [
+   "library_2024",
+   "library_2026"
+  ],
+  "kept": [
+   "library_2024",
+   "library_2026"
+  ],
+  "texts": {
+   "library_2024": "Ref: LIB-1\nEastgate College Library Rules. Issued 2024-02-01.\nOverdue books cost 2 rupees per day after a 3 day grace period. Reference books cannot be issued.\n",
+   "library_2026": "Ref: LIB-4\nEastgate College Library Rules, amendment. Issued 2026-05-05.\nIn the Library Rules, the overdue charge is changed to 5 rupees per day. All other rules stay as they are.\n"
+  },
+  "verdicts": [
+   {
+    "keep": [
+     "library_2024",
+     "library_2026"
+    ],
+    "status": "decided",
+    "reason": "library_2026 amends library_2024 and the rest of it stays",
+    "confidence": 0.67,
+    "via": "decider+code",
+    "latency_ms": 56906.0,
+    "dropped": [],
+    "base": "library_2024",
+    "amends": "library_2026"
+   }
+  ]
+ },
+ {
+  "label": "Hostel gates",
+  "q": "What time do hostel gates close?",
+  "retrieved": [
+   "hostel_a",
+   "hostel_b"
+  ],
+  "kept": [
+   "hostel_a",
+   "hostel_b"
+  ],
+  "texts": {
+   "hostel_a": "Eastgate College Hostel Rules.\nHostel gates close at 9 pm on weekdays for first year students.\n",
+   "hostel_b": "Eastgate College Hostel Notice.\nHostel gates close at 10 pm on weekdays for first year students.\n"
+  },
+  "verdicts": [
+   {
+    "keep": [
+     "hostel_a",
+     "hostel_b"
+    ],
+    "status": "conflict",
+    "reason": "no dates and no clear sign of which came first",
+    "confidence": 0.18,
+    "via": "decider",
+    "latency_ms": 56873.0,
+    "dropped": [],
+    "base": "",
+    "amends": ""
+   }
+  ]
+ },
+ {
+  "label": "Lab safety",
+  "q": "What do I need to wear in the chemistry lab?",
+  "retrieved": [
+   "lab_2025"
+  ],
+  "kept": [
+   "lab_2025"
+  ],
+  "texts": {
+   "lab_2025": "Ref: LAB-1\nEastgate College Chemistry Lab Safety. Issued 2025-08-01.\nGoggles and closed shoes are required in the chemistry lab at all times.\n"
+  },
+  "verdicts": []
+ }
+]

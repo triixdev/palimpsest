@@ -1,0 +1,35 @@
+:root{--cream:#EEE4DA;--sand:#D8C4AC;--pink:#C8A49F;--wine:#4D0E13}
+*{box-sizing:border-box;border-radius:0}
+html{background:var(--wine);color:var(--cream);font:17px/1.55 "Gill Sans","Gill Sans MT",Calibri,"Trebuchet MS",sans-serif}
+body{margin:0 auto;max-width:46rem;padding:1.25rem 1.25rem 4rem}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--cream);padding-bottom:.6rem}
+.mark{margin:0;font:700 1.5rem Palatino,"Palatino Linotype","Iowan Old Style",Georgia,serif;letter-spacing:.02em}
+nav a{margin-left:1rem}
+h1{font:700 2rem/1.2 Palatino,"Palatino Linotype","Iowan Old Style",Georgia,serif;margin:2rem 0 .75rem;max-width:30rem}
+.lede{max-width:36rem}
+.lede strong{background:var(--cream);color:var(--wine);padding:.05rem .35rem}
+a{color:var(--cream)}
+label{display:block;font-weight:700;margin-top:1.5rem}
+input{width:100%;padding:.6rem .7rem;font:inherit;color:var(--wine);background:var(--sand);border:1.5px solid var(--cream);margin:.3rem 0 .7rem}
+button{font:inherit;color:var(--wine);background:var(--cream);border:1.5px solid var(--cream);padding:.5rem 1rem;cursor:pointer}
+.samples{list-style:none;padding:0;margin:.9rem 0 0;display:flex;flex-wrap:wrap;gap:.5rem}
+.samples button{background:none;color:var(--cream);border:1px solid var(--cream);padding:.25rem .7rem}
+:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+#out{margin-top:2rem}
+.row{border:1.5px solid var(--cream);background:var(--sand);color:var(--wine);padding:.8rem 1rem;margin:0 0 .75rem}
+.row h3{margin:0 0 .3rem;font:700 1rem "Gill Sans","Gill Sans MT",Calibri,sans-serif}
+.row p{margin:0;white-space:pre-wrap}
+.row.gone{background:var(--pink)}.row.gone p{text-decoration:line-through}
+.row.conflict{border-style:dashed;border-width:2px;background:var(--wine);color:var(--cream)}
+.tag{font-weight:400}
+.verdict{margin:1.5rem 0 .5rem;border-top:2px solid var(--cream)}
+.verdict p{margin:.5rem 0}
+.verdict strong{background:var(--cream);color:var(--wine);padding:.05rem .4rem}
+.sk{height:5.2rem;background:var(--sand);opacity:.5;border:1.5px solid var(--cream);margin:0 0 .75rem;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+.fine{font-size:.9rem;margin-top:2.5rem}
+.err{border:2px solid var(--cream);background:var(--pink);color:var(--wine);padding:.8rem 1rem}
+@media (max-width:30rem){html{font-size:16px}h1{font-size:1.6rem}}
+.note{border:1.5px solid var(--cream);padding:.7rem 1rem;margin:1.25rem 0 0;max-width:36rem}
+.samples button[aria-pressed="true"]{background:var(--cream);color:var(--wine)}

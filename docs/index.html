@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Palimpsest decides which version of a rule is in force before an AI model reads it.">
+<title>Palimpsest: which version of the rule is in force</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <p class="mark">Palimpsest</p>
+  <nav><a href="#demo">Try it</a> <a href="#privacy">Privacy</a> <a href="#terms">Terms</a></nav>
+</header>
+
+<main id="demo" class="view">
+  <h1>Two documents disagree. Which one still counts?</h1>
+  <p class="lede">Pick a question about the sample college handbook. Palimpsest finds the passages and decides which ones were written over. Then it shows what the answering model is allowed to see. <strong>When it cannot tell it says so.</strong></p>
+  <p class="note">This page replays a real run. The gate and the retriever are the project code. The Decider 2B scores were recorded on my laptop. To ask your own questions run the project locally with the steps in the <a href="https://github.com/triixdev/palimpsest">GitHub repo</a>.</p>
+
+  <ul class="samples" id="samples"></ul>
+
+  <section aria-live="polite" id="out"></section>
+  <p class="fine">All documents are fictional. Answers are for information only.</p>
+</main>
+
+<main id="privacy" class="view" hidden>
+  <h1>Privacy</h1>
+  <p>This page is static. It has no form and sends nothing anywhere. It sets no cookies and loads nothing from other sites.</p>
+  <p>GitHub hosts the page and may keep its own server logs under its own terms.</p>
+  <p>The full project runs on your own computer. There the decision model and the server stay on 127.0.0.1 and the server keeps no question logs.</p>
+  <p><a href="#demo">Back to the demo</a></p>
+</main>
+
+<main id="terms" class="view" hidden>
+  <h1>Terms of use</h1>
+  <p>Palimpsest is an experimental open source project under the MIT license. It was built for the Strands Decider hackathon and comes as is with no warranty.</p>
+  <p>The decision model is small and can be wrong. Check every answer against the original document. Do not use this tool as the only basis for legal or financial or medical or academic decisions. A person must confirm every case marked as conflicting.</p>
+  <p>The sample documents are invented and describe no real institution.</p>
+  <p>Strands Decider 2B and Amazon Bedrock follow their own licenses and service terms.</p>
+  <p><a href="#demo">Back to the demo</a></p>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
