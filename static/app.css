@@ -7,6 +7,7 @@ header{display:flex;justify-content:space-between;align-items:baseline;border-bo
 nav a{margin-left:1rem}
 h1{font:700 2rem/1.2 Palatino,"Palatino Linotype","Iowan Old Style",Georgia,serif;margin:2rem 0 .75rem;max-width:30rem}
 .lede{max-width:36rem}
+.lede strong{background:var(--cream);color:var(--wine);padding:.05rem .35rem}
 a{color:var(--cream)}
 label{display:block;font-weight:700;margin-top:1.5rem}
 input{width:100%;padding:.6rem .7rem;font:inherit;color:var(--wine);background:var(--sand);border:1.5px solid var(--cream);margin:.3rem 0 .7rem}
@@ -23,6 +24,7 @@ button{font:inherit;color:var(--wine);background:var(--cream);border:1.5px solid
 .tag{font-weight:400}
 .verdict{margin:1.5rem 0 .5rem;border-top:2px solid var(--cream)}
 .verdict p{margin:.5rem 0}
+.verdict strong{background:var(--cream);color:var(--wine);padding:.05rem .4rem}
 .sk{height:5.2rem;background:var(--sand);opacity:.5;border:1.5px solid var(--cream);margin:0 0 .75rem;animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.2}}
 @media (prefers-reduced-motion:reduce){.sk{animation:none}}

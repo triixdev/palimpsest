@@ -3,6 +3,12 @@ from . import decider
 from .gate import QUESTION
 from .retrieve import load
 
-for p in load("corpus"):
-    ans, ms = decider.ask(p.text, QUESTION)
-    print(f"{p.pid}: revises={ans['revises']['noul']:.2f}  ({ms:.0f} ms)", flush=True)
+
+def main():
+    for p in load("corpus"):
+        ans, ms = decider.ask(p.text, QUESTION)
+        print(f"{p.pid}: revises={ans['revises']['noul']:.2f}  ({ms:.0f} ms)", flush=True)
+
+
+if __name__ == "__main__":
+    main()

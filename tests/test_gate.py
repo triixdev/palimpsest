@@ -1,6 +1,6 @@
 import unittest
 
-from palimpsest.gate import gate, judge_pair
+from palimpsest.gate import Passage, gate, judge_pair
 from palimpsest.retrieve import load, top_k
 
 
@@ -26,9 +26,20 @@ class Gate(unittest.TestCase):
         v = judge_pair("", P["leave_2022"], P["leave_2025"], ask=boom)
         self.assertEqual((v.via, v.keep, v.dropped), ("code", ["leave_2025"], ["leave_2022"]))
 
+    def test_older_passage_naming_newer_one_is_conflict(self):
+        old = Passage.parse("x", "Ref: X-1\nAttendance Policy. Issued 2020-01-01. This policy supersedes X-2.\nLeave is 5 days.")
+        new = Passage.parse("y", "Ref: X-2\nAttendance Policy. Issued 2025-01-01.\nLeave is 9 days.")
+        v = judge_pair("", old, new, ask=rev())
+        self.assertEqual(v.status, "conflict")
+
     def test_same_document_later_date_wins(self):
         v = judge_pair("", P["refund_2023"], P["refund_2026"], ask=rev())
         self.assertEqual((v.keep, v.dropped), (["refund_2026"], ["refund_2023"]))
+
+    def test_untitled_passages_with_dates_are_conflict(self):
+        a = Passage.parse("a", "Issued 2025-01-01. Parking costs 200 rupees.")
+        b = Passage.parse("b", "Issued 2021-01-01. Parking costs 100 rupees.")
+        self.assertEqual(judge_pair("", a, b, ask=rev()).status, "conflict")
 
     def test_different_documents_without_wording_is_conflict(self):
         v = judge_pair("", P["library_2024"], P["refund_2026"], ask=rev())

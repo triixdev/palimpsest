@@ -14,7 +14,7 @@
 
 <main id="demo" class="view">
   <h1>Two documents disagree. Which one still counts?</h1>
-  <p class="lede">Ask a question about the sample college handbook below. Palimpsest retrieves the passages, decides which ones were written over, and shows you what the answering model is allowed to see. When it cannot tell, it says so.</p>
+  <p class="lede">Ask a question about the sample college handbook. Palimpsest finds the passages and decides which ones were written over. Then it shows what the answering model is allowed to see. <strong>When it cannot tell it says so.</strong></p>
 
   <form id="ask">
     <label for="q">Your question</label>
@@ -29,24 +29,24 @@
   </ul>
 
   <section aria-live="polite" id="out"></section>
-  <p class="fine">All documents are fictional. Answers are information, not legal or academic advice.</p>
+  <p class="fine">All documents are fictional. Answers are for information only.</p>
 </main>
 
 <main id="privacy" class="view" hidden>
   <h1>Privacy</h1>
-  <p>This demo runs on your own computer. The decision model (Strands Decider 2B) is served from your machine and the page talks only to a server on 127.0.0.1.</p>
-  <p>Your question is held in memory while it is checked and then discarded. The server writes no logs of questions and keeps no database, cookies or analytics. The page loads no fonts, scripts or images from other sites.</p>
-  <p>If you connect the optional Amazon Bedrock agent, only the passages that survived the gate and your question are sent to Bedrock, under your own AWS account and its terms. Passages marked as out of date are never sent.</p>
-  <p>Do not put personal data in the sample corpus. If you point Palimpsest at your own documents, they stay in the folder you choose.</p>
+  <p>This demo runs on your own computer. The decision model is served from your machine and the page only talks to a server on 127.0.0.1.</p>
+  <p>Your question stays in memory while it is checked and is then discarded. The server keeps no question logs. It has no database and no cookies and no analytics. The page loads nothing from other sites.</p>
+  <p>The optional Amazon Bedrock agent sends only your question and the passages that passed the gate. That happens under your own AWS account and its terms. Passages marked out of date are never sent.</p>
+  <p>Do not put personal data in the sample corpus. Your own documents stay in the folder you choose.</p>
   <p><a href="#demo">Back to the demo</a></p>
 </main>
 
 <main id="terms" class="view" hidden>
   <h1>Terms of use</h1>
-  <p>Palimpsest is an experimental open source project released under the MIT license, built for the Strands Decider hackathon. It is provided as is, without warranty of any kind.</p>
-  <p>The decision model is small and can be wrong. Treat every answer as a lead to check against the original document. Do not use this tool as the only basis for legal, financial, medical or academic decisions. A person must confirm any case the tool marks as conflicting.</p>
-  <p>The sample documents are invented for this demo and do not describe any real institution. You are responsible for the documents you add and for having the right to use them.</p>
-  <p>Strands Decider 2B and Amazon Bedrock are governed by their own licenses and service terms.</p>
+  <p>Palimpsest is an experimental open source project under the MIT license. It was built for the Strands Decider hackathon and comes as is with no warranty.</p>
+  <p>The decision model is small and can be wrong. Check every answer against the original document. Do not use this tool as the only basis for legal or financial or medical or academic decisions. A person must confirm every case marked as conflicting.</p>
+  <p>The sample documents are invented and describe no real institution. You are responsible for any documents you add and for having the right to use them.</p>
+  <p>Strands Decider 2B and Amazon Bedrock follow their own licenses and service terms.</p>
   <p><a href="#demo">Back to the demo</a></p>
 </main>
 

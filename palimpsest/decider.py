@@ -1,7 +1,6 @@
 """Thin client for a locally served Strands Decider 2B (/v1/systemone).
 
-Request shape confirmed from the LiteLLM provider docs and the strands-decider README:
-{"state": str, "questions": {name: {"type": "noul"|"choice"|"score", "instructions": str, "criteria": ...}}}
+Request shape: {"state": str, "questions": {name: {"type": "noul"|"choice"|"score", "instructions": str, "criteria": ...}}}
 """
 import json
 import os
@@ -15,15 +14,14 @@ class DeciderError(RuntimeError):
 
 
 def ask(state, questions, base=None, timeout=60):
+    url = (base or BASE).rstrip("/") + "/v1/systemone"
+    if not url.startswith(("http://", "https://")):
+        raise DeciderError("decider url must start with http:// or https://")
     body = json.dumps({"state": state, "questions": questions}).encode()
-    req = urllib.request.Request(
-        (base or BASE).rstrip("/") + "/v1/systemone",
-        data=body,
-        headers={"content-type": "application/json"},
-    )
+    req = urllib.request.Request(url, data=body, headers={"content-type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
+        with urllib.request.urlopen(req, timeout=timeout) as r:  # nosec B310 (scheme checked above)
             data = json.load(r)
-    except Exception as e:  # server not started, network down, bad JSON
-        raise DeciderError(f"decider unreachable: {e}") from e
-    return data["answers"], data.get("latency_ms")
+        return data["answers"], data.get("latency_ms") or 0.0
+    except Exception as e:  # server not started or network down or bad reply
+        raise DeciderError(f"decider unreachable or bad reply: {e}") from e
